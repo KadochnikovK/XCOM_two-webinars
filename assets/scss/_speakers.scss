@@ -1,0 +1,113 @@
+.speakers {
+    padding: var(--size-sm);
+
+    &__headline {
+        margin-bottom: var(--size-sm);
+        color: var(--color-bright);
+        
+    }
+
+    &__content {
+        padding-block: var(--size-sm);
+    }
+
+    &__slider {
+        overflow: visible !important;
+        // height: auto;
+        // height: 50vh;
+    }
+
+    &__slide {
+        // height: 40vh !important;
+        border-radius: var(--size-md);
+        padding: var(--size-xxxs);
+        height: auto !important;
+        text-align: center;
+        display: flex !important;
+        flex-direction: column;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        background: var(--color-bright);
+        gap: var(--size-sm);
+        * {
+            color: var(--color-main) !important;
+        }
+        @include xl {
+            flex-direction: row;
+        }
+    }
+
+    &__image-block {
+        height: 60%;
+        max-height: 60vh;
+        border-radius: var(--size-xs);
+        // aspect-ratio: 2;
+        background-color: var(--color-dark);
+        // margin-bottom: auto;
+        display: flex;
+        overflow: hidden;
+        align-items: end;
+        justify-content: center;
+
+        @include xl {
+            height: 100%;
+            max-height: auto;
+            width: 40%;
+            min-width: 40%;
+        }
+    }
+
+    &__image {
+        height: 100%;
+        // width: 100%;
+        object-fit: contain;
+        margin-top: auto;
+    }
+
+    &__name {
+        font-size: var(--size-md);
+        font-weight: 700;
+        color: var(--color-bright);
+        margin-top: auto;
+        margin-bottom: auto;
+
+        @include md {
+            // font-size: var(--size-sm);
+        }
+
+        @include xl {
+            text-align: left;
+        }
+    }
+
+    &__link {
+        align-items: end;
+        font-family: Second;
+        font-size: var(--size-xxxs);
+        margin-top: auto;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__description {
+        font-size: var(--size-sm);
+        color: var(--color-bright);
+        line-height: 1.1;
+
+        @include md {
+            font-size: var(--size-xs);
+        }
+    }
+
+    &__social-links {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+}

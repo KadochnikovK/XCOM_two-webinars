@@ -1,0 +1,178 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    // background: url(./images/background.png) center/cover no-repeat;
+
+    &__button {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: var(--size-sm);
+        // background-color: var(--color-bright);
+
+        // * {
+        //     color: var(--color-main);
+        // }
+
+        @include sm {
+            margin-right: 0;
+            // margin-left: 0;
+            margin-top: 0;
+        }
+
+        // &:hover {
+        //     * {
+        //         color: var(--color-bright) !important;
+        //     }
+        //      background-color: var(--color-main);
+        // }
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        // background: var(--color-dark);
+        // padding: var(--size-sm);
+        // border-radius: var(--size-lg);
+    }
+
+    &__inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: var(--size-sm);
+        row-gap: var(--size-sm);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        grid-column: span 2;
+        position: relative;
+
+        &--full {
+            grid-column: 1 / -1 !important;
+        }
+
+        &--not-valid:not(.form__item--checkbox) {
+            position: relative;
+
+            .form__input {
+                outline: 2px solid var(--color-dark);
+                color: var(--color-dark);
+                padding-right: 30px;
+            }
+
+            .form__label {
+                color: var(--color-dark);
+            }
+
+            &::after {
+                content: "✕";
+                position: absolute;
+                right: 10px;
+                top: calc(50% + var(--size-sm));
+                transform: translateY(-50%);
+                color: var(--color-dark);
+                font-size: var(--size-sm);
+                font-weight: 600;
+            }
+        }
+
+        &--focused {
+            .form__label {
+                color: var(--color-bright) !important;
+            }
+
+            .form__input {
+                border-color: var(--color-bright);
+                color: var(--color-bright);
+                outline: 2px solid var(--color-bright) !important;
+            }
+        }
+
+        &--checkbox {
+            display: flex;
+            margin-top: var(--size-md);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        @media (min-width: 640px) {
+            grid-column: span 1;
+        }
+
+        &:nth-last-child(1) {
+            grid-column: span 2;
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+
+        & + label {
+            position: relative;
+            cursor: pointer;
+            padding: 0;
+            font-size: var(--size-xxs);
+            color: var(--color-bright);
+            font-weight: 500;
+        }
+
+        & + label:before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--color-bright);
+            border-radius: 10pc;
+        }
+
+        &:checked + label:after {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: var(--color-bright);
+            border-radius: 10pc;
+        }
+
+        &:focus + label:before {
+            box-shadow: 0 0 0 2px var(--color-bright);
+        }
+    }
+
+    &__input {
+        padding: var(--size-xxs);
+        font-size: var(--size-xs);
+        border: 1px solid var(--color-bright);
+        border-radius: var(--size-xs);
+        color: var(--color-bright);
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+
+        // padding-left: var(--size-md) !important;
+    }
+
+    &__label {
+        font-size: var(--size-xs);
+        margin-bottom: var(--size-xxxs);
+        font-weight: 500;
+        color: var(--color-bright);
+        display: none;
+    }
+}
+
+.error-message {
+    display: none;
+    position: absolute;
+    top: 92%;
+    color: #ff0000;
+    font-size: var(--size-xxs);
+    margin-top: 5px;
+}
